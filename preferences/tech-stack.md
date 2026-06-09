@@ -2,23 +2,34 @@
 
 ## Web サイト / Web アプリの構成
 
-- Web サイトや Web アプリを作成する場合は、最初に `Vanilla HTML` / `React + TypeScript` / `Svelte` / `SvelteKit` のどれが適切か確認する。
+- 実装の優先順位は `React + TypeScript` → `SvelteKit` → `Vanilla HTML` とする。
+- 迷ったら上位の選択肢から検討する。要件が明確に軽量・静的寄りの場合のみ下位を選ぶ。
 - 基本的にビルド環境は `Vite` を使う。
 - フロントエンドのプロトタイプは原則 `Vite + pnpm`。
 
 ### 選定の目安
 
-- シンプルな静的ページや小規模な可視化: `Vanilla HTML + Vite` を候補にする。
-- コンポーネント化・状態管理・再利用性が必要: `React + TypeScript + Vite` を候補にする。
-- 軽量でインタラクティブな UI や、書き味を重視する場合: `Svelte + Vite` を候補にする。
-- ルーティング・SSR・フォーム処理・サーバーサイド処理が必要: `SvelteKit` や `Next.js` を検討する。
+- 第一候補（`React + TypeScript + Vite`）: コンポーネント化・状態管理・再利用性が必要な場合、または判断に迷う場合。
+- 第二候補（`SvelteKit`）: ルーティング・SSR・フォーム処理・サーバーサイド処理が必要な場合。軽量でインタラクティブな UI や書き味を重視する場合。
+- 第三候補（`Vanilla HTML + Vite`）: シンプルな静的ページや小規模な可視化で、フレームワークが過剰な場合。
+- 注: SSR・認証・API 統合が中心になる場合は `Next.js` も比較対象にする。
+
+## UI / スタイリング
+
+- UI は `shadcn/ui`（コンポーネント）または `Tailwind CSS`（スタイリング）で実装する。
+- 第一候補（`React + TypeScript`）では `shadcn/ui`（`Tailwind CSS` + `Radix UI` ベース）を優先する。
+- `SvelteKit` では `shadcn-svelte`、`Vanilla HTML` では `Tailwind CSS` 単体を用いる。
+- `Tailwind CSS` は v4 系を前提とする（`@theme` ディレクティブ、OKLCH カラー）。
+- コンポーネントはコピー＆オウン方式で同梱し、外部 UI ライブラリへの強い依存を避ける。
 
 ## 地図ライブラリ
 
 - 原則 `MapLibre` を優先する。
 - 軽量な 2D 地図で、要件が単純な場合のみ `Leaflet` を候補にする。
 - ベクトルタイル、PMTiles、MapLibre Style、地理院タイル、複数レイヤ制御、将来的な拡張性が必要な場合は `MapLibre` を選択する。
-- 必要に応じて地理院タイルの標準地図・衛星画像を利用する。
+- 地図の背景はデフォルトで地理院地図（衛星画像＝シームレス空中写真／標準地図）を用い、両者を切り替えられるようにする。
+- 衛星画像は `seamlessphoto`、標準地図は `std` の地理院タイルを基本とする。
+- より広域・国際的な要件では `MapLibre` 標準スタイルや他のベクトルタイルも比較対象にする。
 
 ## データ処理
 

@@ -8,10 +8,12 @@
 
 ## 使用技術スタック
 
-- フレームワーク / ライブラリ:
+- フレームワーク / ライブラリ: （優先順 React + TypeScript → SvelteKit → Vanilla HTML）
+- UI / スタイリング: shadcn/ui（React）/ shadcn-svelte（SvelteKit）/ Tailwind CSS（Vanilla、v4 系）
 - ビルドツール: Vite
 - パッケージマネージャ:
 - 地図ライブラリ: MapLibre（単純な 2D 要件のみ Leaflet）
+- 地図背景: 既定は地理院地図（衛星 seamlessphoto / 標準 std、切替可）
 - データ処理: Python / Ruby
 
 ## ビルド・テスト・デプロイコマンド
