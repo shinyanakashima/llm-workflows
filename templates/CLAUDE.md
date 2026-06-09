@@ -33,8 +33,10 @@ Follow the standard deployment preference:
 ## Tech Stack
 
 - Prefer `Vite` for build tooling, `pnpm` for prototypes.
-- Choose among Vanilla HTML / React + TypeScript / Svelte / SvelteKit per requirements.
+- Framework priority: `React + TypeScript` → `SvelteKit` → `Vanilla HTML`; prefer the higher option when in doubt.
+- Build UI with `shadcn/ui` (React) / `shadcn-svelte` (SvelteKit) / `Tailwind CSS` (Vanilla); Tailwind v4 baseline.
 - Prefer `MapLibre` for maps; use `Leaflet` only for simple 2D needs.
+- Default map basemap is GSI tiles (satellite = `seamlessphoto` / standard = `std`), switchable.
 - Prefer self-contained, API-key-free, statically servable setups.
 
 ## Data
